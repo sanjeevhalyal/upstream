@@ -27,3 +27,27 @@ Route::middleware(['guest'])->group(function () {
 
 // microsoft routes
 Route::get('auth/microsoft/callback', 'AuthController@handleProviderCallback');
+
+
+//admin routes
+//GET: admin login form
+Route::get('admin/login', 'AdminLoginController@showLoginForm');
+//POST: admin login form
+Route::post('admin/login', 'AdminLoginController@login')->name('admin.login.submit');
+//POST: Logout
+Route::get('admin/logout', 'AdminLoginController@logout')->name('admin.logout');
+
+
+//admin dashboard after login.
+Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
+//
+
+
+//admin routes
+// Route::prefix('admin')->group(function() {
+//    Route::get('/login',
+//    'AdminLoginController@showLoginForm')->name('admin.login');
+//    Route::post('/login', 'AdminLoginController@login')->name('admin.login.submit');
+//    Route::get('logout/', 'AdminLoginController@logout')->name('admin.logout');
+//     Route::get('/', 'AdminController@index')->name('admin.dashboard');
+//   });

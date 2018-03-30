@@ -26,6 +26,40 @@ changes in the register.blade.php
 
 Change in showRegistrationForm controller (RegisterUser.php)
 
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+Creation of a multi Auth System.
+
+1. Creation of Model
+php artisan make:model Models/Admins -m
+
+Add the content to the model
+
+2. Changes in the migrations file.
+
+3. Changes in Config/auth.php
+
+4. Create a view.
+AdminController : to handle the admin login view
+
+8. app/Exceptions/Handler.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ----
