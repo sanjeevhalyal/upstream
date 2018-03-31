@@ -44,11 +44,5 @@ Route::get('admin/user', 'AdminController@findUser')->name('admin.findUser');
 
 
 
-//admin routes
-// Route::prefix('admin')->group(function() {
-//    Route::get('/login',
-//    'AdminLoginController@showLoginForm')->name('admin.login');
-//    Route::post('/login', 'AdminLoginController@login')->name('admin.login.submit');
-//    Route::get('logout/', 'AdminLoginController@logout')->name('admin.logout');
-//     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-//   });
+// Products URL
+Route::resource('products','ProductsController');
