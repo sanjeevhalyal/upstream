@@ -43,7 +43,8 @@ class AuthController extends Controller
           //registration
           $us = User::create([
                'name'     => $user->name,
-               'email'    => $user->email
+               'email'    => $user->email,
+               'role_id'  => '3'
            ]);
            Auth::login($us, true);
            return redirect('/home');

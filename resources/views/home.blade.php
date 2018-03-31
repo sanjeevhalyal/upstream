@@ -16,7 +16,8 @@
                     <h1>{{auth()->user()->name}}</h1>
                     <h3>Welcome to Inventory System</h3>
                     <h5>Your details.</h5>
-                    <form class="form-horizontal" action="/action_page.php">
+                    <form method="POST" class="form-horizontal" action="{{route('home.post')}}">
+                      {{ csrf_field() }}
                       <div class="form-group">
                         <label class="control-label col-sm-2" for="tel">Mobile No:</label>
                         <div class="col-sm-10">
@@ -48,4 +49,7 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
 @endsection

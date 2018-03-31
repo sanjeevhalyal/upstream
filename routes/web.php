@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TestController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('/home','HomeController@userRegistration')->name('home.post');
 
 // Login using microsoft login
 Route::middleware(['guest'])->group(function () {
@@ -40,7 +38,10 @@ Route::get('admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 
 //admin dashboard after login.
 Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
-//
+
+//admin routes to get all users.
+Route::get('admin/user', 'AdminController@findUser')->name('admin.findUser');
+
 
 
 //admin routes

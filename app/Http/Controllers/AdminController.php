@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+Use App\User;
 class AdminController extends Controller
 {
     //
@@ -24,5 +24,17 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.dashboard');
+    }
+
+    // Ajax Controller handling request of admin to get the specified user
+    public function findUser()
+    {
+      $users =  \App\User::all();
+      if(request()->ajax())
+      {
+        // return "123";
+          return response()->json($users);
+      }
+      return "hello from backend";
     }
 }
