@@ -27,11 +27,12 @@ class CheckAdmin
             // need to be admin
             return redirect('/');
           }
-          }
           else {
             // user not logged in redirect to login page
             return redirect('/login');
           }
+          }
+
         return $next($request);
     }
 }

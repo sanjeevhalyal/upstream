@@ -24,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+      $user = User::find(Auth::id());
+      //check if the user has admin role
+      if ($user->role_id != '3')
+      {
+        // need to be admin
+        return view('staffadmin.pages.dashboard');
+      }
+
         return view('home');
     }
 
