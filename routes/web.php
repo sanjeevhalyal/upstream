@@ -15,6 +15,9 @@ Route::get('/', 'TestController@index');
 
 Auth::routes();
 
+// Products URL
+Route::resource('products','ProductsController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home','HomeController@userRegistration')->name('home.post');
 
@@ -27,22 +30,22 @@ Route::middleware(['guest'])->group(function () {
 Route::get('auth/microsoft/callback', 'AuthController@handleProviderCallback');
 
 
-//admin routes
-//GET: admin login form
-Route::get('admin/login', 'AdminLoginController@showLoginForm');
-//POST: admin login form
-Route::post('admin/login', 'AdminLoginController@login')->name('admin.login.submit');
-//POST: Logout
-Route::get('admin/logout', 'AdminLoginController@logout')->name('admin.logout');
+//localadmin routes
+//GET: localadmin login form
+Route::get('localadmin/login', 'AdminLoginController@showLoginForm');
+//POST: localadmin login form
+Route::post('localadmin/login', 'AdminLoginController@login')->name('admin.login.submit');
+//localadmin routes to get all users.
+Route::get('localadmin/user', 'AdminController@findUser')->name('admin.findUser');
+//localadmin dashboard after login.
+Route::get('localadmin/dashboard', 'AdminController@index')->name('admin.dashboard');
 
+//admin & Staff routes
+//Display available categories
+Route::get('admin/categories', 'StaffAdminController@showCategories')->name('adminstaff.categories');
 
-//admin dashboard after login.
-Route::get('admin/dashboard', 'AdminController@index')->name('admin.dashboard');
+//add categories
+Route::post('admin/categories', 'StaffAdminController@addNewCategories')->name('adminstaff.newcategories');
 
-//admin routes to get all users.
-Route::get('admin/user', 'AdminController@findUser')->name('admin.findUser');
-
-
-
-// Products URL
-Route::resource('products','ProductsController');
+//remove category
+Route::delete('admin/categories/delete/{id}', 'StaffAdminController@destroyCategories')->name('adminstaff.deletecategories');
