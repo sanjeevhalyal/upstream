@@ -48,6 +48,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        echo "<script>alert('Error, Please Start over'); window.location = \"/\";</script>";
+        //return parent::render($request, $exception);
     }
 }

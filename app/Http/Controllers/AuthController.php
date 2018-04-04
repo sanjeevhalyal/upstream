@@ -28,27 +28,29 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(Request $request)
+    public function handleProviderCallback(Request $request,\Exception  $exception)
     {
-        $user = Socialize::driver('graph')->user();
-        //Check wether the URL is consist of NUIG
-        $authUser = $this->findUser($user);
-        if($authUser)
-        {
-          //login
-          Auth::login($authUser, true);
-          return redirect('/');
-        }
-        else {
-          //registration
-          $us = User::create([
-               'name'     => $user->name,
-               'email'    => $user->email,
-               'role_id'  => '3'
-           ]);
-           Auth::login($us, true);
-           return redirect('/home');
-        }
+
+
+
+            $user = Socialize::driver('graph')->user();
+            //Check wether the URL is consist of NUIG
+            $authUser = $this->findUser($user);
+            if ($authUser) {
+                //login
+                Auth::login($authUser, true);
+                return redirect('/');
+            } else {
+                //registration
+                $us = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role_id' => '3'
+                ]);
+                Auth::login($us, true);
+                return redirect('/home');
+            }
+
     }
 
     /**

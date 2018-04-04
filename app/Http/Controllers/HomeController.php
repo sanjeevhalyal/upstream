@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -25,14 +26,22 @@ class HomeController extends Controller
     public function index()
     {
       $user = User::find(Auth::id());
+        //$bookID = 1;
+        //$collectData = DB::table('transactions')->where('booking_id', $bookID)->first();
       //check if the user has admin role
       if ($user->role_id != '3')
       {
         // need to be admin
-        return view('staffadmin.pages.dashboard');
-      }
 
-        return view('home');
+          echo "test";
+        return view('staffadmin.pages.dashboard');
+          //print_r($collectData);
+          ///return view('staffadmin.pages.dashboard', compact('collectData'));
+      }
+      else {
+
+          return view('home');
+      }
     }
 
     /**

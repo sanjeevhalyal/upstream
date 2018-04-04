@@ -49,3 +49,41 @@ Route::post('admin/categories', 'StaffAdminController@addNewCategories')->name('
 
 //remove category
 Route::delete('admin/categories/delete/{id}', 'StaffAdminController@destroyCategories')->name('adminstaff.deletecategories');
+
+
+Route::post('getuserlist','AdminLoginController@showuserlist');
+
+Route::post('makeasadmin','AdminLoginController@makeasadmin');
+
+Route::post('removeadmin','AdminLoginController@removeadmin');
+
+
+
+Route::get('/testhome',function(){return  view('User Homepage/index'); }); //File::get(public_path() . '/User Homepage/index.html');
+
+
+
+Route::get('/testhome1',function(){return  view('User Homepage/index1');  //File::get(public_path() . '/User Homepage/index.html');
+});
+
+
+Route::get('/getCat','GetCatController');
+
+Route::get('/getProd','GetProductController');
+
+Route::get('/getava','GetAvailabilityController');
+
+Route::post('/addtocart','AddToCartController');
+
+Route::get('/YourCart','CartController');
+
+Route::post('/deletefromcart',function (Request $request) {
+
+
+    DB::table('cart')->where('Cart_Id', '=', $request->input("CartID"))->delete();
+});
+
+
+
+Route::post('/insert', 'StaffAdminController@collect');
+Route::post('/collecting', 'StaffAdminController@return');
